@@ -19,5 +19,6 @@ class Word:
     def __str__(self):
         #return '\nDefinition: ' + str(self.__definition).join('], [') + '\nPages: ' + str(self.__indices) + '\n'
         #return '\nDefinitions:\t ' + str(self.__definition).replace('],', ']\n\t\t\t\t') + '\nPages:\t\t\t ' + str(self.__indices) + '\n'
-        return '\nDefinitions:\t ' + str(self.__definition)[2:-2].replace('], [', ',\n\t\t\t\t ') + '\nPages:\t\t\t ' + str(self.__indices) + '\n'
+        #return '\nDefinitions:\t ' + str(self.__definition)[2:-2].replace('], [', ',\n\t\t\t\t ') + '\nPages:\t\t\t ' + str(self.__indices) + '\n'
+        return '\nDefinitions:\t ' + str(self.__definition) + '\nPages:\t\t\t ' + str(self.__indices) + '\n'
         #return f'\nDefinition: {self.__definition} \nPages: {self.__indices}\n'

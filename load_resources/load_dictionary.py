@@ -1,6 +1,5 @@
-import itertools
-from pathlib import Path
 import csv
+import menu.command_line_interface
 
 
 def lower_first(line):
@@ -11,20 +10,24 @@ def lower_first(line):
 
 
 def read_dictionary():
-    with open("D:/repositories/python/build_index_of_words_with_definitions/resources/dictionary/dictionary.csv",'r') as f:
-        dictionary_reader = csv.DictReader(f)
-        dictionary_reader.fieldnames = ['key']
-        dictionary_reader.restkey = 'value'
-        words_dict = {}
+    try:
+        with open("D:/repositories/python/build_index_of_words_with_definitions/resources/dictionary/dictionary.csv",'r') as f:
+            dictionary_reader = csv.DictReader(f)
+            dictionary_reader.fieldnames = ['key']
+            dictionary_reader.restkey = 'value'
+            words_dict = {}
 
-        for d in dictionary_reader:
-            key = d['key'].lower()
-            value = [s.replace('\n', '') for s in d['value']]
-            if key in words_dict:
-                words_dict[key] += [value]
-                # dict_dict[d['key']].extend(d['value'])
-            else:
-                words_dict[key] = [value]
+            for d in dictionary_reader:
+                key = d['key'].lower()
+                value = [s.replace('\n', '') for s in d['value']]
+                if key in words_dict:
+                    words_dict[key] += [value]
+                    # dict_dict[d['key']].extend(d['value'])
+                else:
+                    words_dict[key] = [value]
+    except FileNotFoundError as file_not_found:
+        raise file_not_found
+
     return words_dict
 
 
