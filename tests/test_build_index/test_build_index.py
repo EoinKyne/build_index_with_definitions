@@ -3,7 +3,7 @@ from pathlib import Path
 
 from build_index.build_index import build_index
 
-test_file = './tests/test_build_index_and_dictionary/test_book.txt'
+test_file = './tests/test_build_index/test_book.txt'
 skip_words = "The a is it for".lower()
 dictionary = {'quick': "'Quick superl. Alive; living; animate; -- opposed to dead or   inanimate.\n\t\t\t\t\t', "
                        "'Quick superl. Characterized by life or liveliness; animated;   sprightly; agile; brisk; ready.\n\t\t\t\t\t', "

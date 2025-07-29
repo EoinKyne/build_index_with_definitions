@@ -1,14 +1,8 @@
+from pathlib import WindowsPath
 import pytest
+from load_resources.get_books import list_books_in_library
 
 
-
-@pytest.fixture
-def book_library():
-    library = ['resources/books_folder/DeBelloGallico-Caesar.txt', 'resources/books_folder/DivineComedy-Dante.txt',
-               'resources/books_folder/HappyPrince-Wilde.txt',
-               'resources/books_folder/PictureOfDorianGray-Wilde.txt',
-               'resources/books_folder/PoblachtNaHEireann.txt', 'resources/books_folder/ThePrince-Machiavelli.txt',
-               'resources/books_folder/WarAndPeace-Tolstoy.txt']
-    return library
-
-
+def test_get_books_with_invalid_path():
+    with pytest.raises(FileNotFoundError):
+        list_books_in_library("./invalid/path/")
