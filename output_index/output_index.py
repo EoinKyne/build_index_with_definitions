@@ -1,10 +1,14 @@
 from pathlib import Path
-import os
+
+
+def get_titles():
+    return f'Word:\t\t\t\tDetails:\n'
 
 
 def print_index_to_console(index):
+    print(get_titles())
     for key, val in index.items():
-        print(f'Word:\t\t\t {key.title()},  {str(val)}')
+        print(f'{key.title()}\t\t\t\t {str(val)}')
 
 
 def write_index_to_text_file(index):
@@ -16,14 +20,17 @@ def write_index_to_text_file(index):
     file_path = directory / file_name
     try:
         with open(file_path, 'w+') as file:
+            file.write(get_titles())
             for key, val in index.items():
-                file.write(f'Word:\t\t\t {key.title()},  {str(val)}\n')
+                file.write(f'{key.title()}\t\t\t\t{str(val)}')
+                #file.write('{}\t\t\t\t{}\n'.format(key.title(),str(val)))
+                #file.write(f'Word:\t\t\t {key.title()},  {str(val)}\n')
     except FileNotFoundError as file_not_found:
         raise file_not_found
 
 
 def print_word_and_definition_to_console(index):
     word = input("Word to return definition: ").lower()
+    print(get_titles())
+    print(f'{word.title()}\t\t\t\t {str(index.get(word))}')
 
-    if word in index:
-        print(f'Word:\t\t\t {word.title()},  {str(index.get(word))}')

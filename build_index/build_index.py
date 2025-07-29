@@ -27,18 +27,16 @@ def build_index_and_dictionary(file, word_dictionary, skip_words):
                         book_index_and_dictionary[wd].set_indices(page_counter)
                     else:
                         if wd in word_dictionary:
-                            new_word = Word('', [])
+                            new_word = Word('', set())
                             new_word.set_definition(word_dictionary.get(wd))
                             new_word.set_indices(page_counter)
                             book_index_and_dictionary[wd] = new_word
                         else:
-                            new_word = Word('', [])
+                            new_word = Word('', set())
                             new_word.set_definition('[ Undefined ]')
                             new_word.set_indices(page_counter)
                             book_index_and_dictionary[wd] = new_word
     except FileNotFoundError as file_not_found:
         raise file_not_found
-    except ValueError as ve:
-        print(ve)
 
     return dict(sorted(book_index_and_dictionary.items()))
