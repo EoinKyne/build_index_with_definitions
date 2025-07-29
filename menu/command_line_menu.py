@@ -48,7 +48,6 @@ def select_book_to_build_index():
 def build_index_from_input(choice):
     if choice == '1':
         try:
-            print("1b")
             book = select_book_to_build_index()
             index = build_index.build_index(book, word_dictionary, skip_words)
             output_index.print_index_to_console(index)
