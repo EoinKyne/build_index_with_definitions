@@ -1,12 +1,13 @@
 import sys
 
-from output_index import output_index_and_dictionary
+from output_index import output_index
 from load_resources import get_books, load_dictionary, load_skip_words
-from build_index_and_dictionary import build_index_and_dictionary
+from build_index import build_index
 
 # paths
 skip_words_path = "./resources/ignore_words/IgnoreWords.txt"
 dictionary_path = "D:/repositories/python/build_index_of_words_with_definitions/resources/dictionary/dictionary.csv"
+library_path = "./resources/books_folder/"
 
 try:
     word_dictionary = load_dictionary.read_dictionary(dictionary_path)
@@ -24,7 +25,7 @@ def get_titles():
 def get_library():
     books = []
     try:
-        books = get_books.list_books_in_library()
+        books = get_books.list_books_in_library(library_path)
     except FileNotFoundError as not_found:
         print(not_found)
     return books
@@ -49,22 +50,22 @@ def build_index_from_input(choice):
         try:
             print("1b")
             book = select_book_to_build_index()
-            index = build_index_and_dictionary.build_index_and_dictionary(book, word_dictionary, skip_words)
-            output_index_and_dictionary.print_index_to_console(index)
+            index = build_index.build_index(book, word_dictionary, skip_words)
+            output_index.print_index_to_console(index)
         except FileNotFoundError as not_found:
             print(not_found)
     elif choice == '2':
         try:
             book = select_book_to_build_index()
-            index = build_index_and_dictionary.build_index_and_dictionary(book, word_dictionary, skip_words)
-            output_index_and_dictionary.write_index_to_text_file(index)
+            index = build_index.build_index(book, word_dictionary, skip_words)
+            output_index.write_index_to_text_file(index)
         except FileNotFoundError as not_found:
             print(not_found)
     elif choice == '3':
         try:
             book = select_book_to_build_index()
-            index = build_index_and_dictionary.build_index_and_dictionary(book, word_dictionary, skip_words)
-            output_index_and_dictionary.print_word_and_definition_to_console(index)
+            index = build_index.build_index(book, word_dictionary, skip_words)
+            output_index.print_word_and_definition_to_console(index)
         except FileNotFoundError as not_found:
             print(not_found)
     elif choice == 'q':

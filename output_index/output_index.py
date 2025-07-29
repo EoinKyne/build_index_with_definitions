@@ -12,7 +12,7 @@ def print_index_to_console(index):
 
 
 def write_index_to_text_file(index):
-    name = input("Provide name of index to be saved : ")
+    name = input("Provide name of index to be saved : ").split('.', 1)[0]
     extension = 'txt'
     file_name = name + '.' + extension
     current_path = Path.cwd()
@@ -23,8 +23,6 @@ def write_index_to_text_file(index):
             file.write(get_titles())
             for key, val in index.items():
                 file.write(f'{key.title()}\t\t\t\t{str(val)}')
-                #file.write('{}\t\t\t\t{}\n'.format(key.title(),str(val)))
-                #file.write(f'Word:\t\t\t {key.title()},  {str(val)}\n')
     except FileNotFoundError as file_not_found:
         raise file_not_found
 

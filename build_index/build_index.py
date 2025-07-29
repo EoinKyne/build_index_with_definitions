@@ -3,7 +3,7 @@ import re
 from word import Word
 
 
-def build_index_and_dictionary(file, word_dictionary, skip_words):
+def build_index(file, word_dictionary, skip_words):
     book_index_and_dictionary = {}
 
     line_counter = 0

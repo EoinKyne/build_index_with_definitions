@@ -1,14 +1,11 @@
-import os
-import sys
-from pathlib import Path
-import menu.command_line_interface
+import glob
+import pathlib
 
 
-def list_books_in_library():
+def list_books_in_library(directory):
     files = []
     try:
-        directory = Path("./resources/books_folder/")
-        files = [f for f in directory.iterdir() if f.is_file()]
+        files = [f for f in pathlib.Path(directory).iterdir() if f.is_file() and f.suffix.lower() == '.txt']
     except FileNotFoundError as file_not_found:
         print(file_not_found, "\n")
         raise file_not_found
