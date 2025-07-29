@@ -14,11 +14,9 @@ class Word:
         return self.__indices
 
     def set_indices(self, indices):
-        self.__indices.append(indices)
+        self.__indices.add(indices)
 
     def __str__(self):
-        #return '\nDefinition: ' + str(self.__definition).join('], [') + '\nPages: ' + str(self.__indices) + '\n'
-        #return '\nDefinitions:\t ' + str(self.__definition).replace('],', ']\n\t\t\t\t') + '\nPages:\t\t\t ' + str(self.__indices) + '\n'
-        #return '\nDefinitions:\t ' + str(self.__definition)[2:-2].replace('], [', ',\n\t\t\t\t ') + '\nPages:\t\t\t ' + str(self.__indices) + '\n'
-        return '\nDefinitions:\t ' + str(self.__definition) + '\nPages:\t\t\t ' + str(self.__indices) + '\n'
-        #return f'\nDefinition: {self.__definition} \nPages: {self.__indices}\n'
+        return 'Definitions:\n' + str('\t\t\t\t\t' + self.__definition) + '\n\t\t\t\t\tPages:\n\t\t\t\t\t'\
+            + (str(sorted(self.__indices))) + '\n\n'
+
